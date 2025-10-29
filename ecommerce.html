@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce React Project</title>
+    <style>
+      @media print {
+            body { margin: 0; }
+            .no-break { page-break-inside: avoid; }
+            h1, h2 { page-break-after: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+        
+        .navbar {
+        background-color: #333;
+        padding: 1rem;
+        text-align: center;
+      }
+      .tab-button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      .tab-button:hover {
+        background-color: #45a049;
+      }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .overview {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        ul {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .bonus {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .criteria {
+            background: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
+            margin: 20px 0;
+        }
+        
+        .endpoints {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 20px 0;
+        }
+        
+        .percentage {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="./index.html" class="tab-button"> Home Page</a>
+      <a href="atlassian.html" class="tab-button">Atlassian Prep</a>
+      <a href="ecommerce.html" class="tab-button">Ecommerce React Project</a>
+    </nav>
+    <div class="content">
+      <h1>Advanced React Application Assignment: E-Commerce Dashboard</h1>
+
+      <div class="overview">
+        <h2>Project Overview</h2>
+        <p>
+          You will build a
+          <strong>full-featured E-Commerce Dashboard</strong> using the
+          DummyJSON API. This project will test your skills in authentication,
+          state management, routing, and data handling.
+        </p>
+      </div>
+
+      <h2>Core Requirements</h2>
+
+      <div class="section no-break">
+        <h3>1. Authentication System</h3>
+        <ul>
+          <li>
+            Implement a complete auth flow using DummyJSON's auth endpoints
+          </li>
+          <li>Login page with form validation</li>
+          <li>Store access token and refresh token properly</li>
+          <li>Implement token refresh logic when the access token expires</li>
+          <li>Protected routes that redirect to login if not authenticated</li>
+          <li>Logout functionality that clears auth state</li>
+          <li>Persist authentication state across page refreshes</li>
+        </ul>
+      </div>
+
+      <div class="section no-break">
+        <h3>2. Routing Structure</h3>
+        <p>Create the following routes using React Router:</p>
+        <ul>
+          <li><code>/login</code> - Public route</li>
+          <li><code>/</code> - Protected: Dashboard home</li>
+          <li>
+            <code>/products</code> - Protected: Products list with pagination
+          </li>
+          <li><code>/products/:id</code> - Protected: Single product detail</li>
+          <li><code>/cart</code> - Protected: Shopping cart view</li>
+          <li><code>/users</code> - Protected: Users list with pagination</li>
+          <li><code>/users/:id</code> - Protected: User profile view</li>
+        </ul>
+      </div>
+
+      <div class="section no-break">
+        <h3>3. Redux State Management</h3>
+        <p>Set up Redux (or Redux Toolkit) to manage:</p>
+        <ul>
+          <li>
+            <strong>Auth slice:</strong> User data, tokens, authentication
+            status
+          </li>
+          <li>
+            <strong>Products slice:</strong> Product list, current product,
+            pagination state, filters
+          </li>
+          <li><strong>Cart slice:</strong> Cart items, total calculations</li>
+          <li>
+            <strong>Users slice:</strong> Users list, current user, pagination
+            state
+          </li>
+        </ul>
+      </div>
+
+      <div class="section no-break">
+        <h3>4. Product Management Features</h3>
+        <ul>
+          <li>
+            Display paginated products list (use limit and skip parameters)
+          </li>
+          <li>Implement product search functionality</li>
+          <li>
+            Filter products by category (fetch and use categories from API)
+          </li>
+          <li>Sort products by price or title</li>
+          <li>View individual product details</li>
+          <li>Add products to cart (cart state managed in Redux)</li>
+        </ul>
+      </div>
+
+      <div class="section no-break">
+        <h3>5. Cart Functionality</h3>
+        <ul>
+          <li>Add/remove products from cart</li>
+          <li>Update product quantities</li>
+          <li>Calculate cart totals</li>
+          <li>Display cart count in navigation</li>
+          <li>Fetch and sync with user's cart from API after login</li>
+        </ul>
+      </div>
+
+      <div class="section no-break">
+        <h3>6. User Management</h3>
+        <ul>
+          <li>Display paginated users list</li>
+          <li>Search users by name</li>
+          <li>View individual user profiles</li>
+          <li>Display the authenticated user's information</li>
+        </ul>
+      </div>
+
+      <div class="section no-break">
+        <h3>7. Pagination</h3>
+        <p>Implement reusable pagination for:</p>
+        <ul>
+          <li>Products list (30 items per page)</li>
+          <li>Users list (20 items per page)</li>
+          <li>Handle page changes and update URL query parameters</li>
+          <li>Show current page, total pages, and navigation controls</li>
+        </ul>
+      </div>
+
+      <h2>Technical Specifications</h2>
+
+      <div class="section no-break">
+        <h3>API Integration Requirements</h3>
+        <p>Create an API service layer with interceptors for:</p>
+        <ul>
+          <li>Adding auth tokens to requests</li>
+          <li>Handling token refresh on 401 errors</li>
+          <li>Error handling and logging</li>
+        </ul>
+        <ul>
+          <li>
+            Use async thunks (Redux Toolkit) or similar patterns for API calls
+          </li>
+          <li>Handle loading states for all async operations</li>
+          <li>Implement proper error handling and display error messages</li>
+        </ul>
+      </div>
+
+      <div class="section no-break">
+        <h3>Advanced Features</h3>
+        <ol>
+          <li>
+            <strong>Token Refresh Logic:</strong> Automatically refresh expired
+            tokens without user intervention
+          </li>
+          <li>
+            <strong>Optimistic Updates:</strong> Update Redux state immediately
+            for cart operations, then sync with API
+          </li>
+          <li>
+            <strong>Search Debouncing:</strong> Debounce search input to avoid
+            excessive API calls
+          </li>
+          <li>
+            <strong>Route Guards:</strong> Create a higher-order component or
+            custom hook for route protection
+          </li>
+          <li>
+            <strong>Persistent Cart:</strong> Sync local cart state with the API
+            cart after authentication
+          </li>
+        </ol>
+      </div>
+
+      <div class="section no-break">
+        <h3>State Architecture</h3>
+        <ul>
+          <li>Use Redux Toolkit with slices</li>
+          <li>
+            Implement selectors for derived state (e.g., cart totals, filtered
+            products)
+          </li>
+          <li>Use proper action creators and reducers</li>
+          <li>Implement middleware for side effects if needed</li>
+        </ul>
+      </div>
+
+      <div class="criteria">
+        <h2>Evaluation Criteria</h2>
+        <p>You will be evaluated on:</p>
+        <ol>
+          <li>
+            <strong>Authentication Flow</strong>
+            <span class="percentage">(25%)</span>: Proper token management,
+            refresh logic, and route protection
+          </li>
+          <li>
+            <strong>State Management</strong>
+            <span class="percentage">(25%)</span>: Clean Redux architecture,
+            proper data flow, and state updates
+          </li>
+          <li>
+            <strong>API Integration</strong>
+            <span class="percentage">(20%)</span>: Efficient API calls, error
+            handling, and token refresh interceptors
+          </li>
+          <li>
+            <strong>Pagination</strong> <span class="percentage">(15%)</span>:
+            Smooth pagination experience across different views
+          </li>
+          <li>
+            <strong>Code Organization</strong>
+            <span class="percentage">(15%)</span>: Component structure,
+            reusability, and separation of concerns
+          </li>
+        </ol>
+      </div>
+
+      <div class="bonus">
+        <h2>Bonus Challenges (Optional)</h2>
+        <ul>
+          <li>
+            Implement product filtering with multiple simultaneous filters
+            (category + price range)
+          </li>
+          <li>
+            Add infinite scroll as an alternative to traditional pagination for
+            products
+          </li>
+          <li>
+            Create a "recently viewed products" feature using local storage
+          </li>
+          <li>Implement a search history feature</li>
+          <li>Add loading skeletons for better UX during data fetching</li>
+        </ul>
+      </div>
+
+      <div class="endpoints">
+        <h2>DummyJSON Endpoints You'll Need</h2>
+        <ul>
+          <li><code>POST /auth/login</code> - Authentication</li>
+          <li><code>POST /auth/refresh</code> - Token refresh</li>
+          <li><code>GET /auth/me</code> - Current user</li>
+          <li><code>GET /products</code> - Products list</li>
+          <li><code>GET /products/search</code> - Search products</li>
+          <li><code>GET /products/categories</code> - All categories</li>
+          <li>
+            <code>GET /products/category/{category}</code> - Products by
+            category
+          </li>
+          <li><code>GET /products/{id}</code> - Single product</li>
+          <li><code>GET /carts/user/{id}</code> - User's cart</li>
+          <li><code>GET /users</code> - Users list</li>
+          <li><code>GET /users/search</code> - Search users</li>
+          <li><code>GET /users/{id}</code> - Single user</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Submission Guidelines</h2>
+        <p>Your application should:</p>
+        <ul>
+          <li>Run without errors</li>
+          <li>Handle edge cases (empty states, API errors, expired tokens)</li>
+          <li>Maintain authentication state across page refreshes</li>
+          <li>Have a logical routing structure</li>
+          <li>Use Redux for all shared state</li>
+          <li>Implement proper loading and error states</li>
+        </ul>
+        <p style="margin-top: 30px; font-style: italic; color: #555">
+          Good luck! This project will demonstrate your ability to build
+          production-ready React applications with complex state management and
+          authentication flows.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
