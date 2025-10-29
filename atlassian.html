@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atlassian Prep</title>
+       <title>Atlassian P50 Interview Prep - 90 Day Roadmap</title>
     <style>
       * {
         margin: 0;
@@ -39,6 +39,614 @@
         padding: 20px;
         text-align: center;
       }
+        :root {
+            --atlassian-blue: #0052CC;
+            --atlassian-blue-dark: #0747A6;
+            --atlassian-blue-light: #4C9AFF;
+            --color-red: #DE350B;
+            --color-orange: #FF8B00;
+            --color-yellow: #FFAB00;
+            --color-green: #36B37E;
+            --color-gray-100: #F4F5F7;
+            --color-gray-200: #EBECF0;
+            --color-gray-300: #DFE1E6;
+            --color-gray-500: #6B778C;
+            --color-gray-700: #253858;
+            --color-white: #FFFFFF;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--color-gray-100);
+            color: var(--color-gray-700);
+            line-height: 1.6;
+        }
+
+        .app-header {
+            background: linear-gradient(135deg, var(--atlassian-blue) 0%, var(--atlassian-blue-dark) 100%);
+            color: var(--color-white);
+            padding: 24px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+        }
+
+        .app-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: var(--color-green);
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--color-white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--color-gray-500);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--atlassian-blue);
+        }
+
+        .stat-subtitle {
+            font-size: 14px;
+            color: var(--color-gray-500);
+            margin-top: 4px;
+        }
+
+        .phase-section {
+            background: var(--color-white);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .phase-header {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, var(--atlassian-blue), var(--atlassian-blue-dark));
+            color: var(--color-white);
+            transition: background 0.3s ease;
+        }
+
+        .phase-header:hover {
+            background: linear-gradient(to right, var(--atlassian-blue-dark), var(--atlassian-blue));
+        }
+
+        .phase-title {
+            flex: 1;
+        }
+
+        .phase-title h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .phase-title p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .phase-stats {
+            text-align: right;
+            margin-right: 16px;
+        }
+
+        .phase-stats-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .phase-stats-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .phase-toggle {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .phase-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .phase-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .phase-content.open {
+            max-height: 10000px;
+        }
+
+        .week-card {
+            margin: 16px;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .week-card:hover {
+            border-color: var(--atlassian-blue-light);
+        }
+
+        .week-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            background: var(--color-gray-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .week-header:hover {
+            background: var(--color-gray-200);
+        }
+
+        .week-title {
+            flex: 1;
+        }
+
+        .week-title h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            margin-bottom: 4px;
+        }
+
+        .week-title .focus {
+            font-size: 14px;
+            color: var(--atlassian-blue);
+            font-weight: 500;
+        }
+
+        .week-progress {
+            margin-right: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-gray-500);
+        }
+
+        .week-toggle {
+            font-size: 20px;
+            color: var(--color-gray-500);
+            transition: transform 0.3s ease;
+        }
+
+        .week-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .week-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .week-content.open {
+            max-height: 3000px;
+        }
+
+        .week-details {
+            padding: 20px;
+            background: var(--color-white);
+        }
+
+        .week-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--color-gray-100);
+            border-radius: 6px;
+        }
+
+        .info-item {
+            font-size: 13px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--color-gray-500);
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            color: var(--color-gray-700);
+        }
+
+        .topics-list {
+            margin: 16px 0;
+        }
+
+        .topics-list h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            margin-bottom: 8px;
+        }
+
+        .topics-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .topics-list li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+            color: var(--color-gray-700);
+        }
+
+        .topics-list li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--atlassian-blue);
+            font-weight: bold;
+        }
+
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .resource-tag {
+            padding: 6px 12px;
+            background: var(--atlassian-blue-light);
+            color: var(--color-white);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .tasks-section {
+            margin-top: 20px;
+        }
+
+        .tasks-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            margin-bottom: 12px;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: var(--color-gray-100);
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .task-item:hover {
+            background: var(--color-gray-200);
+        }
+
+        .task-item.completed {
+            opacity: 0.7;
+        }
+
+        .task-checkbox {
+            margin-right: 12px;
+            margin-top: 2px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--atlassian-blue);
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-size: 14px;
+            color: var(--color-gray-700);
+            margin-bottom: 4px;
+        }
+
+        .task-item.completed .task-title {
+            text-decoration: line-through;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+
+        .priority-must {
+            background: var(--color-red);
+            color: var(--color-white);
+        }
+
+        .priority-high {
+            background: var(--color-orange);
+            color: var(--color-white);
+        }
+
+        .priority-medium {
+            background: var(--color-yellow);
+            color: var(--color-gray-700);
+        }
+
+        .reset-button {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--color-red);
+            color: var(--color-white);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            font-size: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reset-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-start-prep {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-green);
+            color: var(--color-white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-start-prep:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-start-prep.paused {
+            background: var(--color-orange);
+        }
+
+        .btn-start-prep.running {
+            background: var(--color-orange);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-white);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            margin-bottom: 12px;
+        }
+
+        .modal-content p {
+            font-size: 14px;
+            color: var(--color-gray-500);
+            margin-bottom: 24px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: var(--color-gray-200);
+            color: var(--color-gray-700);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-gray-300);
+        }
+
+        .btn-danger {
+            background: var(--color-red);
+            color: var(--color-white);
+        }
+
+        .btn-danger:hover {
+            background: #BF2600;
+        }
+
+        .motivational-message {
+            text-align: center;
+            padding: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-white);
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .motivational-message h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .motivational-message p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .app-header h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 16px 12px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-value {
+                font-size: 24px;
+            }
+
+            .week-info {
+                grid-template-columns: 1fr;
+            }
+
+            .reset-button {
+                bottom: 16px;
+                right: 16px;
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+
+            .modal-content {
+                padding: 24px;
+            }
+        }
     </style>
   </head>
   <body>
@@ -48,11 +656,894 @@
       <a href="ecommerce.html" class="tab-button">Ecommerce React Project</a>
     </nav>
     <div class="content">
-      <h1>Atlassian Interview Preparation</h1>
-      <p>
-        This page contains resources and materials for Atlassian interview
-        preparation.
-      </p>
+        <div class="app-header">
+        <div class="container">
+            <h1>
+                <span>🎯</span>
+                Atlassian P50 Interview Prep - 90 Day Roadmap
+            </h1>
+            <p>Target: Senior Engineer | ₹80-110 lakhs | 250-300 Problems</p>
+            <div style="margin-bottom: 16px;">
+                <button class="btn btn-start-prep" id="startPrepButton" onclick="handleStartPause()">
+                    <span id="startPrepIcon">▶</span>
+                    <span id="startPrepText">Start Preparation</span>
+                </button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="overallProgressBar" style="width: 0%">
+                    <span class="progress-text" id="overallProgressText">0%</span>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="container">
+        <div id="motivationalMessage" class="motivational-message">
+            <h3>🚀 Ready to Begin!</h3>
+            <p>Your journey to Atlassian starts here. Let's make these 90 days count!</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Days Since Start</div>
+                <div class="stat-value" id="daysCompleted">0/90</div>
+                <div class="stat-subtitle" id="daysPausedText" style="display: none; color: var(--color-orange);">Days Paused: 0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Tasks Completed</div>
+                <div class="stat-value" id="tasksCompleted">0/<span id="totalTasks">0</span></div>
+                <div class="stat-subtitle">Keep up the momentum</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Completion Rate</div>
+                <div class="stat-value" id="completionRate">0%</div>
+                <div class="stat-subtitle">Your success metric</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Current Phase</div>
+                <div class="stat-value" id="currentPhase">1</div>
+                <div class="stat-subtitle">Building foundations</div>
+            </div>
+        </div>
+
+        <div id="phasesContainer"></div>
+    </div>
+
+    <button class="reset-button" id="resetButton" title="Reset Progress">↻</button>
+
+    <div class="modal" id="resetModal">
+        <div class="modal-content">
+            <h3>Reset All Progress?</h3>
+            <p>This will clear all your completed tasks and statistics. This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelReset">Cancel</button>
+                <button class="btn btn-danger" id="confirmReset">Reset All</button>
+            </div>
+        </div>
+    </div>
+
+      </div>
+     <script>
+        // Data structure for the 90-day roadmap
+        const roadmapData = {
+            phases: [
+                {
+                    phaseNumber: 1,
+                    phaseName: "Basics Foundation",
+                    days: "1-30",
+                    description: "Top-down skimming approach - Build breadth before depth",
+                    weeks: [
+                        {
+                            weekNumber: 1,
+                            dayRange: "1-7",
+                            focus: "Arrays, Strings, HashMap Basics",
+                            topics: [
+                                "Arrays operations and manipulation",
+                                "String manipulation techniques",
+                                "HashMaps and Sets fundamentals",
+                                "Two Pointers pattern"
+                            ],
+                            timePerDay: "2-3 hours/day",
+                            resources: ["NeetCode 150 (Easy)", "Blind 75 Arrays", "LeetCode Easy"],
+                            problemCount: "15-20 Easy problems",
+                            tasks: [
+                                { title: "Solve 2-3 Easy array problems", priority: "medium" },
+                                { title: "Watch NeetCode pattern video for arrays", priority: "medium" },
+                                { title: "Review and understand solutions deeply", priority: "medium" },
+                                { title: "Practice Two Pointers technique", priority: "medium" }
+                            ]
+                        },
+                        {
+                            weekNumber: 2,
+                            dayRange: "8-14",
+                            focus: "Stacks, Queues, Linked Lists",
+                            topics: [
+                                "Stack operations and use cases",
+                                "Queue basics and implementations",
+                                "Singly and Doubly Linked Lists",
+                                "Fast and Slow pointers pattern"
+                            ],
+                            timePerDay: "2-3 hours/day",
+                            resources: ["NeetCode 150 Stack/Queue", "AlgoMonster Patterns"],
+                            problemCount: "15-20 Easy-Medium",
+                            tasks: [
+                                { title: "Implement Stack from scratch", priority: "high" },
+                                { title: "Implement Queue from scratch", priority: "high" },
+                                { title: "Solve 2-3 LinkedList problems", priority: "medium" },
+                                { title: "Practice Fast/Slow pointer pattern", priority: "medium" }
+                            ]
+                        },
+                        {
+                            weekNumber: 3,
+                            dayRange: "15-21",
+                            focus: "Trees & Binary Search",
+                            topics: [
+                                "Binary Trees fundamentals",
+                                "Binary Search Trees (BST)",
+                                "DFS and BFS traversals",
+                                "Binary Search pattern"
+                            ],
+                            timePerDay: "2-3 hours/day",
+                            resources: ["NeetCode Trees", "Tech Interview Handbook"],
+                            problemCount: "20 Medium problems",
+                            tasks: [
+                                { title: "Solve 3 Tree problems daily", priority: "high" },
+                                { title: "Master all tree traversals (inorder, preorder, postorder)", priority: "high" },
+                                { title: "Practice Lowest Common Ancestor (LCA) - Atlassian favorite", priority: "must" },
+                                { title: "Understand BFS vs DFS applications", priority: "medium" }
+                            ]
+                        },
+                        {
+                            weekNumber: 4,
+                            dayRange: "22-30",
+                            focus: "Graphs & Basic DP",
+                            topics: [
+                                "Graph traversal (BFS/DFS)",
+                                "Topological sort",
+                                "Introduction to Dynamic Programming",
+                                "1D DP problems"
+                            ],
+                            timePerDay: "3 hours/day",
+                            resources: ["Grind 75 Graphs", "NeetCode DP Basics"],
+                            problemCount: "20-25 Medium",
+                            tasks: [
+                                { title: "Solve 2-3 Graph problems daily", priority: "high" },
+                                { title: "Practice BFS/DFS templates", priority: "high" },
+                                { title: "Intro to DP: Fibonacci, Climbing Stairs", priority: "medium" },
+                                { title: "Understand topological sort", priority: "medium" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    phaseNumber: 2,
+                    phaseName: "Deep Dive Advanced",
+                    days: "31-60",
+                    description: "Master patterns through spaced repetition",
+                    weeks: [
+                        {
+                            weekNumber: 5,
+                            dayRange: "31-38",
+                            focus: "Advanced DP Patterns",
+                            topics: [
+                                "2D Dynamic Programming",
+                                "Knapsack pattern (0/1, unbounded)",
+                                "Longest Common Subsequence (LCS)",
+                                "Longest Increasing Subsequence (LIS)",
+                                "Palindrome patterns",
+                                "Memoization vs Tabulation"
+                            ],
+                            timePerDay: "3-4 hours/day",
+                            resources: ["NeetCode DP", "AlgoMaster 20 DP Patterns"],
+                            problemCount: "25 Medium-Hard DP",
+                            tasks: [
+                                { title: "Solve 3-4 DP problems daily", priority: "high" },
+                                { title: "Master Knapsack pattern variations", priority: "high" },
+                                { title: "Practice LCS and all variations", priority: "high" },
+                                { title: "Understand when to use memoization vs tabulation", priority: "medium" }
+                            ]
+                        },
+                        {
+                            weekNumber: 6,
+                            dayRange: "39-46",
+                            focus: "Advanced Graph Algorithms",
+                            topics: [
+                                "Dijkstra's shortest path",
+                                "Union Find (Disjoint Set)",
+                                "Minimum Spanning Tree (MST)",
+                                "Advanced DFS/BFS patterns",
+                                "Matrix traversal problems"
+                            ],
+                            timePerDay: "3-4 hours/day",
+                            resources: ["William Fiset YouTube", "NeetCode Graphs"],
+                            problemCount: "20 Medium-Hard",
+                            tasks: [
+                                { title: "Implement Dijkstra from scratch", priority: "high" },
+                                { title: "Practice Union Find problems", priority: "high" },
+                                { title: "Solve Word Ladder (Atlassian favorite)", priority: "must" },
+                                { title: "Master matrix traversal patterns", priority: "medium" }
+                            ]
+                        },
+                        {
+                            weekNumber: 7,
+                            dayRange: "47-53",
+                            focus: "Heaps, Tries, Advanced DS",
+                            topics: [
+                                "Min/Max Heap operations",
+                                "Priority Queue applications",
+                                "Trie (Prefix Tree)",
+                                "Segment Tree basics"
+                            ],
+                            timePerDay: "3-4 hours/day",
+                            resources: ["Tech Interview Handbook", "LeetCode Patterns"],
+                            problemCount: "20 Medium",
+                            tasks: [
+                                { title: "Implement Heap from scratch", priority: "high" },
+                                { title: "Build Trie data structure", priority: "high" },
+                                { title: "Solve Merge k Sorted Lists", priority: "high" },
+                                { title: "Practice Priority Queue problems", priority: "medium" }
+                            ]
+                        },
+                        {
+                            weekNumber: 8,
+                            dayRange: "54-60",
+                            focus: "Backtracking & Greedy",
+                            topics: [
+                                "N-Queens problem",
+                                "Subsets and Permutations",
+                                "Combination problems",
+                                "Greedy algorithms",
+                                "Advanced Sliding Window"
+                            ],
+                            timePerDay: "3-4 hours/day",
+                            resources: ["NeetCode Backtracking", "Grind 169"],
+                            problemCount: "25 Medium-Hard",
+                            tasks: [
+                                { title: "Solve 3-4 Backtracking problems daily", priority: "high" },
+                                { title: "Master N-Queens solution", priority: "high" },
+                                { title: "Practice Greedy patterns", priority: "medium" },
+                                { title: "Advanced sliding window techniques", priority: "medium" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    phaseNumber: 3,
+                    phaseName: "Atlassian Specific",
+                    days: "61-90",
+                    description: "Company-focused preparation and mock interviews",
+                    weeks: [
+                        {
+                            weekNumber: 9,
+                            dayRange: "61-67",
+                            focus: "Atlassian Tagged Questions",
+                            topics: [
+                                "Design Snake Game (LC 353)",
+                                "Lowest Common Ancestor variations",
+                                "Rate Limiter design",
+                                "Middleware Router patterns",
+                                "Tagging System implementation"
+                            ],
+                            timePerDay: "4 hours/day",
+                            resources: ["LeetCode Atlassian Tag", "GitHub Company Lists"],
+                            problemCount: "30 Atlassian-specific",
+                            tasks: [
+                                { title: "Design Snake Game (353)", priority: "must" },
+                                { title: "Lowest Common Ancestor (236)", priority: "must" },
+                                { title: "LRU Cache (146)", priority: "must" },
+                                { title: "Design Twitter (355)", priority: "must" },
+                                { title: "Time Based Key-Value Store (981)", priority: "must" },
+                                { title: "Design In-Memory File System (588)", priority: "must" },
+                                { title: "Design A Leaderboard (1244)", priority: "must" },
+                                { title: "Logger Rate Limiter (359)", priority: "must" }
+                            ]
+                        },
+                        {
+                            weekNumber: 10,
+                            dayRange: "68-75",
+                            focus: "System Design Fundamentals (HLD)",
+                            topics: [
+                                "Load Balancing strategies",
+                                "Caching layers (CDN, Redis)",
+                                "Database design (SQL vs NoSQL)",
+                                "Microservices architecture",
+                                "API design and versioning",
+                                "Scaling patterns",
+                                "CAP theorem",
+                                "Sharding strategies"
+                            ],
+                            timePerDay: "3-4 hours/day",
+                            resources: ["System Design Primer", "Alex Xu Book", "Jordan Has No Life"],
+                            problemCount: "10 HLD problems",
+                            tasks: [
+                                { title: "Study Load Balancing, DNS, CDN basics", priority: "high" },
+                                { title: "Design Instagram Feed", priority: "high" },
+                                { title: "Learn SQL vs NoSQL, Sharding, CAP theorem", priority: "high" },
+                                { title: "Design URL Shortener", priority: "high" },
+                                { title: "Understand Caching, Message Queues, Rate Limiting", priority: "high" },
+                                { title: "Design Netflix streaming service", priority: "high" },
+                                { title: "Design Jira (Atlassian product)", priority: "must" },
+                                { title: "Design Confluence (Atlassian product)", priority: "must" }
+                            ]
+                        },
+                        {
+                            weekNumber: 11,
+                            dayRange: "76-82",
+                            focus: "Low-Level Design & OOP",
+                            topics: [
+                                "SOLID principles",
+                                "Factory pattern",
+                                "Strategy pattern",
+                                "Observer pattern",
+                                "Singleton pattern",
+                                "Design patterns in practice"
+                            ],
+                            timePerDay: "3 hours/day",
+                            resources: ["Grokking OOD", "Refactoring.guru"],
+                            problemCount: "8 LLD problems",
+                            tasks: [
+                                { title: "Study and practice SOLID principles", priority: "high" },
+                                { title: "Implement common design patterns", priority: "high" },
+                                { title: "Design Snake Game with OOP", priority: "must" },
+                                { title: "Design Parking Lot system", priority: "medium" },
+                                { title: "Design Chess game", priority: "medium" },
+                                { title: "Design Jira ticket system", priority: "must" },
+                                { title: "Design Confluence page system", priority: "must" }
+                            ]
+                        },
+                        {
+                            weekNumber: 12,
+                            dayRange: "83-90",
+                            focus: "Mock Interviews & Review",
+                            topics: [
+                                "Full mock interview practice",
+                                "Weak areas revision",
+                                "STAR method for behavioral",
+                                "Atlassian values alignment"
+                            ],
+                            timePerDay: "4-5 hours/day",
+                            resources: ["Pramp", "Interviewing.io", "Prepfully"],
+                            problemCount: "5-7 full mocks + 20 revision",
+                            tasks: [
+                                { title: "Day 83: Coding mock (Data Structures focus)", priority: "must" },
+                                { title: "Day 84: Coding mock (Code Design - Snake Game)", priority: "must" },
+                                { title: "Day 85: Behavioral mock (STAR stories)", priority: "must" },
+                                { title: "Day 86: System Design mock (Design Jira)", priority: "must" },
+                                { title: "Day 87: Revision of weak areas", priority: "high" },
+                                { title: "Day 88: Manager round mock", priority: "must" },
+                                { title: "Day 89: Full loop simulation", priority: "must" },
+                                { title: "Day 90: Rest and final review", priority: "high" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // State management with localStorage fallback
+        let progressData = {
+            checkedTasks: {},
+            startDate: null,
+            pausedAt: null,
+            totalPausedTime: 0
+        };
+
+        // Storage helper with fallback
+        const storage = {
+            isAvailable: false,
+            
+            init() {
+                try {
+                    const test = '__storage_test__';
+                    window['local' + 'Storage'].setItem(test, test);
+                    window['local' + 'Storage'].removeItem(test);
+                    this.isAvailable = true;
+                } catch (e) {
+                    this.isAvailable = false;
+                    console.warn('Storage not available, using in-memory storage');
+                }
+            },
+            
+            getItem(key) {
+                if (this.isAvailable) {
+                    try {
+                        return window['local' + 'Storage'].getItem(key);
+                    } catch (e) {
+                        console.error('Storage getItem failed:', e);
+                    }
+                }
+                return null;
+            },
+            
+            setItem(key, value) {
+                if (this.isAvailable) {
+                    try {
+                        window['local' + 'Storage'].setItem(key, value);
+                        return true;
+                    } catch (e) {
+                        console.error('Storage setItem failed:', e);
+                    }
+                }
+                return false;
+            }
+        };
+
+        storage.init();
+
+        // Initialize app
+        function init() {
+            loadProgress();
+            renderPhases();
+            updateStatistics();
+            updateStartPauseButton();
+            updateDaysCounter();
+            setupEventListeners();
+        }
+
+        // Load progress from storage
+        function loadProgress() {
+            try {
+                const saved = storage.getItem('atlassianPrepProgress');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    progressData = {
+                        checkedTasks: parsed.checkedTasks || {},
+                        startDate: parsed.startDate || null,
+                        pausedAt: parsed.pausedAt || null,
+                        totalPausedTime: parsed.totalPausedTime || 0
+                    };
+                    
+                    // Restore checkbox states
+                    for (const taskId in progressData.checkedTasks) {
+                        const checkbox = document.getElementById(taskId);
+                        if (checkbox) {
+                            checkbox.checked = progressData.checkedTasks[taskId];
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error('Failed to load progress:', e);
+            }
+        }
+
+        // Save progress to storage
+        function saveProgress() {
+            try {
+                storage.setItem('atlassianPrepProgress', JSON.stringify(progressData));
+            } catch (e) {
+                console.error('Failed to save progress:', e);
+            }
+        }
+
+        // Generate task ID
+        function getTaskId(phaseNum, weekNum, taskIndex) {
+            return `phase${phaseNum}_week${weekNum}_task${taskIndex}`;
+        }
+
+        // Check if task is completed
+        function isTaskCompleted(taskId) {
+            return progressData.checkedTasks[taskId] === true;
+        }
+
+        // Toggle task completion
+        function toggleTask(taskId) {
+            progressData.checkedTasks[taskId] = !progressData.checkedTasks[taskId];
+            saveProgress();
+            updateStatistics();
+            updateProgressBar();
+        }
+
+        // Render all phases
+        function renderPhases() {
+            const container = document.getElementById('phasesContainer');
+            container.innerHTML = '';
+
+            roadmapData.phases.forEach(phase => {
+                const phaseElement = createPhaseElement(phase);
+                container.appendChild(phaseElement);
+            });
+        }
+
+        // Create phase element
+        function createPhaseElement(phase) {
+            const phaseDiv = document.createElement('div');
+            phaseDiv.className = 'phase-section';
+
+            const completedTasks = getPhaseCompletedTasks(phase);
+            const totalTasks = getPhaseTotalTasks(phase);
+            const completionPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+            phaseDiv.innerHTML = `
+                <div class="phase-header" onclick="togglePhase(${phase.phaseNumber})">
+                    <div class="phase-title">
+                        <h2>Phase ${phase.phaseNumber}: ${phase.phaseName}</h2>
+                        <p>Days ${phase.days} - ${phase.description}</p>
+                    </div>
+                    <div class="phase-stats">
+                        <div class="phase-stats-value">${completionPercent}%</div>
+                        <div class="phase-stats-label">${completedTasks}/${totalTasks} tasks</div>
+                    </div>
+                    <div class="phase-toggle" id="phaseToggle${phase.phaseNumber}">▼</div>
+                </div>
+                <div class="phase-content" id="phaseContent${phase.phaseNumber}">
+                    ${phase.weeks.map(week => createWeekElement(phase.phaseNumber, week)).join('')}
+                </div>
+            `;
+
+            return phaseDiv;
+        }
+
+        // Create week element
+        function createWeekElement(phaseNum, week) {
+            const completedTasks = getWeekCompletedTasks(phaseNum, week.weekNumber);
+            const totalTasks = week.tasks.length;
+
+            return `
+                <div class="week-card">
+                    <div class="week-header" onclick="toggleWeek(${phaseNum}, ${week.weekNumber})">
+                        <div class="week-title">
+                            <h3>Week ${week.weekNumber} (Days ${week.dayRange})</h3>
+                            <div class="focus">Focus: ${week.focus}</div>
+                        </div>
+                        <div class="week-progress">${completedTasks}/${totalTasks}</div>
+                        <div class="week-toggle" id="weekToggle${phaseNum}_${week.weekNumber}">▼</div>
+                    </div>
+                    <div class="week-content" id="weekContent${phaseNum}_${week.weekNumber}">
+                        <div class="week-details">
+                            <div class="week-info">
+                                <div class="info-item">
+                                    <div class="info-label">Time Commitment</div>
+                                    <div class="info-value">${week.timePerDay}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Problems to Solve</div>
+                                    <div class="info-value">${week.problemCount}</div>
+                                </div>
+                            </div>
+                n                            <div class="topics-list">
+                                <h4>Topics Covered:</h4>
+                                <ul>
+                                    ${week.topics.map(topic => `<li>${topic}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="resources">
+                                ${week.resources.map(resource => `<span class="resource-tag">${resource}</span>`).join('')}
+                            </div>
+                            
+                            <div class="tasks-section">
+                                <h4>Daily Tasks:</h4>
+                                ${week.tasks.map((task, index) => {
+                                    const taskId = getTaskId(phaseNum, week.weekNumber, index);
+                                    const isCompleted = isTaskCompleted(taskId);
+                                    return `
+                                        <div class="task-item ${isCompleted ? 'completed' : ''}">
+                                            <input 
+                                                type="checkbox" 
+                                                class="task-checkbox" 
+                                                id="${taskId}"
+                                                ${isCompleted ? 'checked' : ''}
+                                                onchange="handleTaskChange('${taskId}')"
+                                            >
+                                            <div class="task-content">
+                                                <div class="task-title">
+                                                    ${task.title}
+                                                    <span class="priority-badge priority-${task.priority}">${task.priority}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get phase completed tasks count
+        function getPhaseCompletedTasks(phase) {
+            let count = 0;
+            phase.weeks.forEach(week => {
+                week.tasks.forEach((task, index) => {
+                    const taskId = getTaskId(phase.phaseNumber, week.weekNumber, index);
+                    if (isTaskCompleted(taskId)) count++;
+                });
+            });
+            return count;
+        }
+
+        // Get phase total tasks count
+        function getPhaseTotalTasks(phase) {
+            let count = 0;
+            phase.weeks.forEach(week => {
+                count += week.tasks.length;
+            });
+            return count;
+        }
+
+        // Get week completed tasks count
+        function getWeekCompletedTasks(phaseNum, weekNum) {
+            let count = 0;
+            const phase = roadmapData.phases.find(p => p.phaseNumber === phaseNum);
+            const week = phase.weeks.find(w => w.weekNumber === weekNum);
+            week.tasks.forEach((task, index) => {
+                const taskId = getTaskId(phaseNum, weekNum, index);
+                if (isTaskCompleted(taskId)) count++;
+            });
+            return count;
+        }
+
+        // Toggle phase expand/collapse
+        function togglePhase(phaseNum) {
+            const content = document.getElementById(`phaseContent${phaseNum}`);
+            const toggle = document.getElementById(`phaseToggle${phaseNum}`);
+            
+            content.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        // Toggle week expand/collapse
+        function toggleWeek(phaseNum, weekNum) {
+            const content = document.getElementById(`weekContent${phaseNum}_${weekNum}`);
+            const toggle = document.getElementById(`weekToggle${phaseNum}_${weekNum}`);
+            
+            content.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        // Handle task checkbox change
+        function handleTaskChange(taskId) {
+            const checkbox = document.getElementById(taskId);
+            progressData.checkedTasks[taskId] = checkbox.checked;
+            saveProgress();
+            updateStatistics();
+            updateProgressBar();
+            renderPhases();
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const totalTasks = getAllTasksCount();
+            const completedTasks = getCompletedTasksCount();
+            const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+            
+            const progressBar = document.getElementById('overallProgressBar');
+            const progressText = document.getElementById('overallProgressText');
+            
+            if (progressBar && progressText) {
+                progressBar.style.width = completionRate + '%';
+                progressText.textContent = completionRate + '%';
+            }
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            const totalTasks = getAllTasksCount();
+            const completedTasks = getCompletedTasksCount();
+            const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+            
+            // Update DOM
+            document.getElementById('totalTasks').textContent = totalTasks;
+            document.getElementById('tasksCompleted').textContent = completedTasks;
+            document.getElementById('completionRate').textContent = completionRate + '%';
+            
+            // Update progress bar
+            document.getElementById('overallProgressBar').style.width = completionRate + '%';
+            document.getElementById('overallProgressText').textContent = completionRate + '%';
+            
+            // Update days counter based on actual start date
+            updateDaysCounter();
+            
+            // Update current phase
+            const currentPhase = getCurrentPhase(completionRate);
+            document.getElementById('currentPhase').textContent = currentPhase;
+            
+            // Update motivational message
+            updateMotivationalMessage(completionRate);
+        }
+
+        // Get total tasks count
+        function getAllTasksCount() {
+            let count = 0;
+            roadmapData.phases.forEach(phase => {
+                phase.weeks.forEach(week => {
+                    count += week.tasks.length;
+                });
+            });
+            return count;
+        }
+
+        // Get completed tasks count
+        function getCompletedTasksCount() {
+            return Object.values(progressData.checkedTasks).filter(v => v === true).length;
+        }
+
+        // Calculate days since start
+        function calculateDaysSinceStart() {
+            if (!progressData.startDate) {
+                return 0;
+            }
+            
+            const startTime = new Date(progressData.startDate).getTime();
+            const currentTime = progressData.pausedAt ? new Date(progressData.pausedAt).getTime() : Date.now();
+            const totalPausedTime = progressData.totalPausedTime || 0;
+            
+            const activeTime = currentTime - startTime - totalPausedTime;
+            const days = Math.floor(activeTime / (1000 * 60 * 60 * 24)) + 1;
+            
+            return Math.max(1, days);
+        }
+
+        // Handle Start/Pause button
+        function handleStartPause() {
+            if (!progressData.startDate) {
+                // First time starting
+                progressData.startDate = new Date().toISOString();
+                progressData.pausedAt = null;
+            } else if (progressData.pausedAt) {
+                // Resuming from pause
+                const pauseDuration = Date.now() - new Date(progressData.pausedAt).getTime();
+                progressData.totalPausedTime = (progressData.totalPausedTime || 0) + pauseDuration;
+                progressData.pausedAt = null;
+            } else {
+                // Pausing
+                progressData.pausedAt = new Date().toISOString();
+            }
+            
+            saveProgress();
+            updateStartPauseButton();
+            updateDaysCounter();
+            updateStatistics();
+        }
+
+        // Update Start/Pause button
+        function updateStartPauseButton() {
+            const button = document.getElementById('startPrepButton');
+            const icon = document.getElementById('startPrepIcon');
+            const text = document.getElementById('startPrepText');
+            
+            if (!button || !icon || !text) return;
+            
+            button.className = 'btn btn-start-prep';
+            
+            if (!progressData.startDate) {
+                // Not started
+                button.classList.remove('running', 'paused');
+                icon.textContent = '▶';
+                text.textContent = 'Start Preparation';
+            } else if (progressData.pausedAt) {
+                // Paused
+                button.classList.add('paused');
+                icon.textContent = '▶';
+                text.textContent = 'Resume Preparation';
+            } else {
+                // Running
+                button.classList.add('running');
+                icon.textContent = '⏸';
+                text.textContent = 'Pause Preparation';
+            }
+        }
+
+        // Update days counter
+        function updateDaysCounter() {
+            const daysElement = document.getElementById('daysCompleted');
+            const daysPausedElement = document.getElementById('daysPausedText');
+            
+            if (progressData.startDate) {
+                const days = calculateDaysSinceStart();
+                daysElement.textContent = days + '/90';
+                
+                // Show paused time if exists
+                const totalPausedDays = Math.floor((progressData.totalPausedTime || 0) / (1000 * 60 * 60 * 24));
+                if (totalPausedDays > 0 && daysPausedElement) {
+                    daysPausedElement.style.display = 'block';
+                    daysPausedElement.textContent = 'Days Paused: ' + totalPausedDays;
+                } else if (daysPausedElement) {
+                    daysPausedElement.style.display = 'none';
+                }
+            } else {
+                daysElement.textContent = '0/90';
+                if (daysPausedElement) {
+                    daysPausedElement.style.display = 'none';
+                }
+            }
+        }
+
+        // Get current phase based on completion
+        function getCurrentPhase(completionRate) {
+            if (completionRate < 33) return 1;
+            if (completionRate < 67) return 2;
+            return 3;
+        }
+
+        // Update motivational message
+        function updateMotivationalMessage(completionRate) {
+            const messageDiv = document.getElementById('motivationalMessage');
+            let title = '';
+            let message = '';
+            
+            if (completionRate === 0) {
+                title = '🚀 Ready to Begin!';
+                message = 'Your journey to Atlassian starts here. Let\'s make these 90 days count!';
+            } else if (completionRate < 10) {
+                title = '💪 Great Start!';
+                message = 'You\'ve taken the first step. Keep the momentum going!';
+            } else if (completionRate < 25) {
+                title = '🔥 Building Momentum!';
+                message = 'You\'re making excellent progress. Stay consistent!';
+            } else if (completionRate < 50) {
+                title = '⭐ Quarter Way There!';
+                message = 'You\'re building strong foundations. Don\'t stop now!';
+            } else if (completionRate < 75) {
+                title = '🎯 Halfway Champion!';
+                message = 'Incredible progress! You\'re well on your way to Atlassian!';
+            } else if (completionRate < 90) {
+                title = '🏆 Final Sprint!';
+                message = 'Almost there! Finish strong and ace that interview!';
+            } else if (completionRate < 100) {
+                title = '👑 Nearly Perfect!';
+                message = 'You\'re so close! Complete the journey!';
+            } else {
+                title = '🎉 Mission Accomplished!';
+                message = 'You\'ve completed the 90-day roadmap! You\'re ready for Atlassian!';
+            }
+            
+            messageDiv.innerHTML = `
+                <h3>${title}</h3>
+                <p>${message}</p>
+            `;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Reset button
+            document.getElementById('resetButton').addEventListener('click', () => {
+                document.getElementById('resetModal').classList.add('show');
+            });
+            
+            // Cancel reset
+            document.getElementById('cancelReset').addEventListener('click', () => {
+                document.getElementById('resetModal').classList.remove('show');
+            });
+            
+            // Confirm reset
+            document.getElementById('confirmReset').addEventListener('click', () => {
+                resetProgress();
+                document.getElementById('resetModal').classList.remove('show');
+            });
+            
+            // Close modal on backdrop click
+            document.getElementById('resetModal').addEventListener('click', (e) => {
+                if (e.target.id === 'resetModal') {
+                    document.getElementById('resetModal').classList.remove('show');
+                }
+            });
+        }
+
+        // Reset all progress
+        function resetProgress() {
+            progressData = {
+                checkedTasks: {},
+                startDate: null,
+                pausedAt: null,
+                totalPausedTime: 0
+            };
+            saveProgress();
+            renderPhases();
+            updateStatistics();
+            updateStartPauseButton();
+            updateDaysCounter();
+        }
+
+        // Make functions globally accessible
+        window.togglePhase = togglePhase;
+        window.toggleWeek = toggleWeek;
+        window.handleTaskChange = handleTaskChange;
+        window.handleStartPause = handleStartPause;
+
+        // Initialize app on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
   </body>
 </html>
