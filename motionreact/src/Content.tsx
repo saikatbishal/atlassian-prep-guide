@@ -1,7 +1,7 @@
 import { easeInOut, motion } from "motion/react";
 import React from "react";
 
-const Content = () => {
+const Content = ({content}:{content:string}) => {
   return (
     <div className="h-screen w-full bg-neutral-900 flex items-center justify-center"
     style ={{
@@ -39,7 +39,7 @@ const Content = () => {
         translateZ:100
     }}
       className="group relative text-neutral-500 px-12 py-4 rounded-lg bg-black shadow-[0px_1px_2px_0px_rgba(255,255,255,0.1)_inset, 0px_-1px_2px_0px_rgba(255,255,255,0.1)_inset] cursor-pointer">
-        <span className="group-hover:text-cyan-500 transition-colors duration-300">Subscribe</span>
+        <span className="group-hover:text-cyan-500 transition-colors duration-300">{content}</span>
         <span className="absolute inset-x-0 bottom-px bg-linear-to-r from-transparent via-cyan-500 to-transparent h-px w-3/4 mx-auto"></span>
         <span className="opacity-0 group-hover:opacity-100 transition-opacity  duration-300 absolute inset-x-0 bottom-px bg-linear-to-r from-transparent via-cyan-500 to-transparent h-1 w-full mx-auto blur-sm"></span>
       </motion.button>

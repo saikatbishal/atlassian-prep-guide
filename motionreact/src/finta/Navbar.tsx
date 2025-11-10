@@ -1,17 +1,39 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
-
- 
-
+const Navbar = ({ className }: { className?: string }) => {
   return (
-        <ul className={`flex gap-6 items-center`}>
-          <Link to="/founders" className='hover:text-neutral-500 transition-colors duration-300 text-sm'>Founders</Link>
-          <Link to="/guide" className='hover:text-neutral-500 transition-colors duration-300 text-sm'>Guide</Link>
-          <Link to="/pricing" className='hover:text-neutral-500 transition-colors duration-300 text-sm'>Pricing</Link>
-          <li><a href='/login' target='_blank' className='hover:text-neutral-500 transition-colors duration-300 text-sm'>Log In</a></li>
-        </ul>
-  )
-}
+    <div className={className}>
+      <ul className={` ${className || ""} flex gap-6 items-center`}>
+        <Link
+          to="/founders"
+          className="text-foreground hover:text-muted-foreground transition-colors duration-300 text-sm"
+        >
+          Founders
+        </Link>
+        <Link
+          to="/guide"
+          className="text-foreground hover:text-muted-foreground transition-colors duration-300 text-sm"
+        >
+          Guide
+        </Link>
+        <Link
+          to="/pricing"
+          className="text-foreground hover:text-muted-foreground transition-colors duration-300 text-sm"
+        >
+          Pricing
+        </Link>
+        <li>
+          <a
+            href="/login"
+            target="_blank"
+            className="text-foreground hover:text-muted-foreground transition-colors duration-300 text-sm"
+          >
+            Log In
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+};
 
-export default Navbar
+export default Navbar;

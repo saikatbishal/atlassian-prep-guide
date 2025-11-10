@@ -2,7 +2,8 @@ import { motion } from "motion/react";
 import React from "react";
 
 type ButtonProps = {
-  variant?: "primary" | "secondary" | "muted" |"transparent";
+  id?:number|string;
+  variant?: "primary" | "secondary" | "muted" |"transparent"|"dark";
   className?: string;
   text: string|React.ReactNode;
   rounded?: "sm" | "md" | "lg" | "xl" | "full";
@@ -32,8 +33,10 @@ const FintaButton = ({
         return "bg-[#6c757d] text-white hover:bg-[#5a6268] border-[0.5px]";
       case "muted":
         return "bg-[#e9ecef] text-[#495057] hover:bg-[#dee2e6] border-[0.5px]";
-        case "transparent":
-            return "bg-transparent text-neutral-600 hover:bg-[rgba(100,100,100,0.2)]";
+      case "transparent":
+        return "bg-transparent text-neutral-600 hover:bg-[rgba(100,100,100,0.2)]";
+      case "dark":
+        return "bg-black text-white hover:bg-gray-800";  
       default:
         return "bg-[#2679f3] text-white hover:bg-[#2262C7]";
     }
@@ -68,7 +71,7 @@ const FintaButton = ({
       className={` ${className} ${returnButtonSize()} 
             ${returnButtonRounded()}
             ${returnColorFromVariant()}
-            py-2 px-6 text-xl cursor-pointer inline-block text-center transition-colors duration-300 ease-in-out  border-neutral-300 inset-shadow-zinc-200"
+            py-2 px-6 text-xl flex cursor-pointer items-center justify-center text-center transition-colors duration-300 ease-in-out  border-neutral-300 inset-shadow-zinc-200"
  `}
       onClick={() => handleClick()}
     >
