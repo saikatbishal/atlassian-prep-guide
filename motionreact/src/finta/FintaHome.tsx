@@ -1,13 +1,14 @@
 import FintaButton from "./FintaButton";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import uiheroimage from "../../public/herouiv5.png";
 // import { Toggle } from "../components/ui/toggle";
 // import { DarkModeIcon, LightModeIcon } from "../../public/Icons";
 import { motion } from "framer-motion";
-import { useTheme } from "../context/ThemeContext";
+// import { useTheme } from "../context/ThemeContext";
 const FintaHome = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { isDarkMode, toggleTheme } = useTheme();
+  // const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +33,7 @@ const FintaHome = () => {
   };
 
   const heroItemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       y: 0,
@@ -139,6 +140,9 @@ const FintaHome = () => {
 
         <motion.h1
           className="block lg:hidden text-center text-[40px] font-medium text-pretty leading-[45px] tracking-tight text-foreground"
+          transition={{
+            delay: 2,
+          }}
           variants={heroItemVariants}
         >
           Magically simplify <br /> accounting and taxes
@@ -177,7 +181,7 @@ const FintaHome = () => {
                 </svg>
               </div>
             }
-            variant={isDarkMode ? "dark" : "transparent"}
+            variant={"transparent"}
             rounded="md"
             size="lg"
           />
@@ -189,7 +193,39 @@ const FintaHome = () => {
         >
           For US-based C-Corps, LLCs, and PBCs.
         </motion.p>
+<div className="relative rounded-xl overflow-hidden justify-center items-center self-center flex">
+            <motion.img
+          style={{
+            translateZ: 100,
+            
+          }}
+          initial={{
+            opacity: 0.8,
+            y: 40,
+            rotateY: 20,
+            rotateX: 40
+          }}
+          animate={{
+            rotateY: 0,
+            rotateX:0,
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 1.3,
+          }}
+          src={uiheroimage}
+          alt="ui-hero-image"
+          className="object-cover"
+          height="80%"
+          width="80%"
+        />
+  <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent"></div>
+
+        </div>
+<p className="flex justify-center items-center -mt-10 mb-20  ">Trusted by fast-growing startups</p>
       </motion.div>
+
     </div>
   );
 };

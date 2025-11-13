@@ -15,7 +15,7 @@ function App() {
     <motion.div 
     initial={{ backgroundColor:"linear-gradient(to bottom, transparent, #90caf9)",opacity: 0 }}
   whileInView={{  opacity: 1,  }}
-    className='h-lvh w-full bg-linear-to-b from-transparent to-blue-200'>
+    className='h-lvh w-full bg-linear-to-b from-transparent via-blue-200 to-transparent'>
       <div className="w-20 ml-10 mt-4 fixed z-999 -top-1 cursor-pointer" onClick={() => navigate('/')}>
           <FintaLogo/>
         </div>

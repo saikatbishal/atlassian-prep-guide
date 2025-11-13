@@ -1,5 +1,4 @@
 import { easeInOut, motion } from "motion/react";
-import React from "react";
 
 const Content = ({content}:{content:string}) => {
   return (

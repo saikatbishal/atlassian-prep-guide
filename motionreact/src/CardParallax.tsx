@@ -1,6 +1,6 @@
 // import { useRef } from "react";
 // import { motion, useScroll, useTransform } from "motion/react";
-export const Card = ({data}) => {
+export const Card = ({data}:{data: any}) => {
     const { headline, description, content } = data;
   return (
     <>

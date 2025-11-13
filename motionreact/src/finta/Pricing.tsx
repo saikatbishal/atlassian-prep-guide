@@ -1,15 +1,14 @@
-"use client";
-
 import FintaButton from "./FintaButton";
 import Navbar from "./Navbar";
 import { Button } from "../components/ui/button";
 import { ButtonGroup } from "../components/ui/button-group";
 import { useState } from "react";
 import { motion, type Variants } from "motion/react";
-import Content from "../Content";
+// import Content from "../Content";
 
 interface PlanCardProps {
   id?: number;
+  isMonthly: boolean;
   image: string;
   title: string;
   price: string;
@@ -21,7 +20,10 @@ interface PlanCardProps {
 }
 
 // Utility component for letter-by-letter animation
-const AnimatedText: React.FC<{ text: string; id?:number }> = ({ text, id}) => {
+const AnimatedText: React.FC<{ text: string; id?: number }> = ({
+  text,
+  id,
+}) => {
   const letters = text.split("");
 
   return (
@@ -33,12 +35,12 @@ const AnimatedText: React.FC<{ text: string; id?:number }> = ({ text, id}) => {
         visible: {
           transition: {
             staggerChildren: 0.05,
-            delay:0.1*(id||1)
+            delay: 0.1 * (id || 1),
           },
         },
       }}
     >
-      {letters.map((char, index) => (
+      {/* {letters.map((char, index) => (
         <motion.span
           key={index}
           variants={{
@@ -50,14 +52,15 @@ const AnimatedText: React.FC<{ text: string; id?:number }> = ({ text, id}) => {
         >
           {char === " " ? "\u00A0" : char}
         </motion.span>
-      ))}
+      ))} */}
+      {letters}
     </motion.span>
   );
 };
 
 // Card animation variants
 const cardVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
+  hidden: { opacity: 0, scale: 0.8, y: -20 },
   visible: (i: number) => ({
     opacity: 1,
     scale: 1,
@@ -65,12 +68,14 @@ const cardVariants: Variants = {
       duration: 0.5,
       delay: i * 0.2,
       ease: "easeInOut",
+      y: 0,
     },
   }),
 };
 
 const PlanCard: React.FC<PlanCardProps> = ({
   id,
+  isMonthly,
   image,
   title,
   price,
@@ -80,10 +85,11 @@ const PlanCard: React.FC<PlanCardProps> = ({
   highlighted = false,
   index,
 }) => {
-    const [imageOpacity, setImageOpacity] = useState(0);
+  const [imageOpacity, setImageOpacity] = useState(0);
 
   return (
     <motion.div
+      id={id + "_card"}
       className={`group relative flex flex-col justify-between rounded-2xl border shadow-sm p-8 w-[320px] h-[550px]  ${
         highlighted ? "border-blue-100 border-4 p-2" : "bg-white"
       }`}
@@ -97,7 +103,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
         src={image}
         alt={`${title}-background`}
         className="absolute inset-0 w-full h-full object-cover rounded-2xl transition-opacity duration-300"
-        style={{ opacity: imageOpacity||'0.2' }}
+        style={{ opacity: imageOpacity || "0.2" }}
       />
 
       {/* Overlay for readability */}
@@ -123,7 +129,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
             <AnimatedText text={price} />
           </span>
           <span className="text-gray-500 text-lg">
-            <AnimatedText text="/month" />
+            <AnimatedText text={isMonthly ? "/month" : "/year"} />
           </span>
         </div>
 
@@ -171,10 +177,9 @@ const Pricing = () => {
     setMonthlyPayment(isMonthly);
   };
 
-  const plans = 
-  [
+  const plans = [
     {
-      id:1,
+      id: 1,
       title: "Basic",
       price: monthlyPayment ? "$10" : "$100",
       description: "For individuals and small teams getting started.",
@@ -190,7 +195,7 @@ const Pricing = () => {
         "https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=800&q=80",
     },
     {
-      id:2,
+      id: 2,
       title: "Pro",
       price: monthlyPayment ? "$25" : "$250",
       description: "For teams that need more organization.",
@@ -207,7 +212,7 @@ const Pricing = () => {
         "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     },
     {
-      id:3,
+      id: 3,
       title: "Enterprise",
       price: monthlyPayment ? "$80" : "$800",
       description: "For large organizations with advanced needs.",
@@ -233,11 +238,9 @@ const Pricing = () => {
       <div className="min-h-screen flex flex-col items-center bg-linear-to-b from-gray-50 to-white pt-32 pb-20 px-6">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900">
-            Choose Your Plan
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900">Choose Your Plan</h1>
           <p className="text-gray-600 mt-2">
-            Affordable and adaptable pricing to suit your goals." 
+            Affordable and adaptable pricing to suit your goals.
           </p>
 
           <div className="flex self-center justify-center my-10">
@@ -272,8 +275,9 @@ const Pricing = () => {
         <div className="flex flex-wrap justify-center gap-8">
           {plans.map((plan, index) => (
             <PlanCard
-            id={plan.id}
-            image={plan.image}
+              id={plan.id}
+              isMonthly={monthlyPayment}
+              image={plan.image}
               key={index}
               title={plan.title}
               price={plan.price}
