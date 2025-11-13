@@ -1,11 +1,11 @@
 import Navbar from "./Navbar";
-import { motion, AnimatePresence, useScroll } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { IconArrowLeft, IconArrowRight, IconMapPin } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import { foundersData } from "../data/foundersData";
 import FintaModal from "./FintaModal";
 const Founders = () => {
-  const { scrollYProgress } = useScroll();
+  // const { scrollYProgress } = useScroll();
   const [active, setActive] = useState(0);
   const [autoplay, setAutoplay] = useState<boolean>(false);
   const [showBio, setShowBio] = useState<boolean>(false);

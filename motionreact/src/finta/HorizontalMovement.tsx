@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 const brands = ["Google", "Apple", "Microsoft", "Amazon", "Netflix", "Meta"];
 
-export default function AnimatedBrandScroll(children:React.ReactNode) {
+export default function AnimatedBrandScroll() {
   const baseX = useRef(0);
 
   useAnimationFrame(() => {

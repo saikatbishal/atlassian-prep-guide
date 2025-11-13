@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Content from './Content'
 import FintaHome from './finta/FintaHome.tsx'
 import Founders from './finta/Founders.tsx'
 import Guide from './finta/Guide.tsx'
